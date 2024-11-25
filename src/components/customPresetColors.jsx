@@ -1,12 +1,17 @@
 /* eslint-disable */
 
+import Title from "./reuseable-components/Title";
+
 export default function CustomPresetColors({ colors }) {
 
     const { usersSavedPresetColors } = colors;
 
     return (
         <div className="mt-3">
-            <h1 className="text-xl text-gray-700 font-bold mb-2">Custom Preset Colors</h1>
+            <Title 
+                text="Custom Preset Colors"
+                className="text-xl text-gray-700 font-bold mb-2"
+            />
             <hr />
             <div className="grid gap-2 grid-cols-5 mt-3">
                 {

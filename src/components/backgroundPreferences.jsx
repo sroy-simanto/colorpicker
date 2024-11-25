@@ -1,15 +1,32 @@
 /* eslint-disable */
 
+import Button from "./reuseable-components/Button";
+import Input from "./reuseable-components/Input";
+import Label from "./reuseable-components/Label";
+import Title from "./reuseable-components/Title";
 
-export default function BackgroundPreferences({ bgImage, handleBgImageChange, handleBgRemove, handleBgSize, handleBgRepeat, handleBgPosition, handleBgAttachment}) {
+
+export default function BackgroundPreferences({ bgImage, handleBgImageChange, handleBgRemove, handleBgSize, handleBgRepeat, handleBgPosition, handleBgAttachment }) {
+
+    const backgroundStyleProperties = {
+        bgSize: {
+            
+        }
+    }
 
     return (
         <div className="mt-5">
-            <h1 className="text-xl text-gray-700 font-bold mb-2">Background Preferences</h1>
+            <Title
+                text="Background Preferences"
+                className="text-xl text-gray-700 font-bold mb-2"
+            />
             <hr />
             <div className="flex justify-between px-3">
                 <div className="mt-3">
-                    <h3 className="text-gray-700 text-sm font-bold">Background Preview</h3>
+                    <Title
+                        text="Background Preview"
+                        className="text-gray-700 text-sm font-bold"
+                    />
                     <div className="mt-2">
                         {
                             bgImage ? (
@@ -18,10 +35,23 @@ export default function BackgroundPreferences({ bgImage, handleBgImageChange, ha
                                         <img src={URL.createObjectURL(bgImage)} className="w-full h-full" alt="image" />
                                     </div>
                                     <div className="mt-3 flex items-center gap-3">
-                                        <button className="text-sm bg-slate-200 rounded px-2 py-1" onClick={handleBgRemove}>Remove</button>
+                                        <Button
+                                            text="Remove"
+                                            className="text-sm bg-slate-200 rounded px-2 py-1"
+                                            handler={handleBgRemove}
+                                        />
                                         <div>
-                                            <label className="text-sm bg-slate-200 rounded px-2 py-1" htmlFor="bg-image">Upload</label>
-                                            <input type="file" id="bg-image" onChange={handleBgImageChange} hidden />
+                                            <Label
+                                                className="text-sm bg-slate-200 rounded px-2 py-1"
+                                                htmlFor="bg-image"
+                                                text="Upload"
+                                            />
+                                            <Input
+                                                type="file"
+                                                id="bg-image"
+                                                handler={handleBgImageChange}
+                                                hidden={true}
+                                            />
                                         </div>
                                     </div>
                                 </>
@@ -30,8 +60,17 @@ export default function BackgroundPreferences({ bgImage, handleBgImageChange, ha
                                     <div className="w-48 h-32 bg-gray-300 rounded-md"></div>
                                     <div className="mt-3">
                                         <div>
-                                            <label className="text-sm bg-slate-200 rounded px-2 py-1" htmlFor="bg-image">Upload</label>
-                                            <input type="file" id="bg-image" onChange={handleBgImageChange} hidden />
+                                            <Label
+                                                className="text-sm bg-slate-200 rounded px-2 py-1"
+                                                htmlFor="bg-image"
+                                                text="Upload"
+                                            />
+                                            <Input
+                                                type="file"
+                                                id="bg-image"
+                                                handler={handleBgImageChange}
+                                                hidden={true}
+                                            />
                                         </div>
                                     </div>
                                 </>
