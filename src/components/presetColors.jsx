@@ -1,6 +1,8 @@
 /* eslint-disable */
 
-export default function PresetColors () {
+import Title from "./reuseable-components/Title"
+
+export default function PresetColors() {
 
     const defaultPresetColors = [
         '#ffcdd2',
@@ -30,14 +32,17 @@ export default function PresetColors () {
 
     return (
         <div>
-            <h1 className="text-xl text-gray-700 font-bold mb-2">Preset Colors</h1>
+            <Title
+                text="Preset Colors"
+                className="text-xl text-gray-700 font-bold"
+            />
             <hr />
             <div className="grid gap-2 grid-cols-5 mt-3">
                 {
                     defaultPresetColors.map((color, i) => (
-                        <div key={i} className="w-24 h-8 rounded-md cursor-pointer" style={{ backgroundColor: `${color}`}}></div>
+                        <div key={i} className="w-24 h-8 rounded-md cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
                     ))
-                }            
+                }
             </div>
         </div>
     )
