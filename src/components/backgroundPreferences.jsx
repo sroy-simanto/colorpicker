@@ -6,13 +6,7 @@ import Label from "./reuseable-components/Label";
 import Title from "./reuseable-components/Title";
 
 
-export default function BackgroundPreferences({ bgImage, handleBgImageChange, handleBgRemove, handleBgSize, handleBgRepeat, handleBgPosition, handleBgAttachment }) {
-
-    const backgroundStyleProperties = {
-        bgSize: {
-            
-        }
-    }
+export default function BackgroundPreferences({ bgImage, handleBgImageChange, handleBgRemove, handleBgStyles }) {
 
     return (
         <div className="mt-5">
@@ -82,7 +76,7 @@ export default function BackgroundPreferences({ bgImage, handleBgImageChange, ha
                     <div className="mt-3">
                         <div>
                             <label className="block my-2 text-sm font-bold" htmlFor="bg-size">Background Size</label>
-                            <select onChange={handleBgSize} className="border w-full p-1 outline-none" name="bgSize" id="bg-size">
+                            <select onChange={handleBgStyles} className="border w-full p-1 outline-none" name="bgSize" id="bg-size">
                                 <option value="auto">Auto</option>
                                 <option value="inherit">Inherit</option>
                                 <option value="contain">Contain</option>
@@ -91,14 +85,14 @@ export default function BackgroundPreferences({ bgImage, handleBgImageChange, ha
                         </div>
                         <div>
                             <label className="block my-2 text-sm font-bold" htmlFor="bg-repeat">Background Repeat</label>
-                            <select onChange={handleBgRepeat} className="border w-full p-1 outline-none" name="bgRepeat" id="bg-repeat">
+                            <select onChange={handleBgStyles} className="border w-full p-1 outline-none" name="bgRepeat" id="bg-repeat">
                                 <option value="repeat">Repeat</option>
                                 <option value="no-repeat">No Repeat</option>
                             </select>
                         </div>
                         <div>
                             <label className="block my-2 text-sm font-bold" htmlFor="bg-position">Background Position</label>
-                            <select onChange={handleBgPosition} className="border w-full p-1 outline-none" name="bgPosition" id="bg-position">
+                            <select onChange={handleBgStyles} className="border w-full p-1 outline-none" name="bgPosition" id="bg-position">
                                 <option value="left-top">Left Top</option>
                                 <option value="left-center">Left Center</option>
                                 <option value="left-bottom">Left Bottom</option>
@@ -112,7 +106,7 @@ export default function BackgroundPreferences({ bgImage, handleBgImageChange, ha
                         </div>
                         <div>
                             <label className="block my-2 text-sm font-bold" htmlFor="bg-attachment">Background Attachment</label>
-                            <select onChange={handleBgAttachment} className="border w-full p-1 outline-none" name="bgAttachment" id="bg-attachment">
+                            <select onChange={handleBgStyles} className="border w-full p-1 outline-none" name="bgAttachment" id="bg-attachment">
                                 <option value="initial">Initial</option>
                                 <option value="inherit">Inherit</option>
                                 <option value="local">Local</option>

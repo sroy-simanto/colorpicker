@@ -24,9 +24,9 @@ export default function Input({
             defaultChecked={defaultChecked}
             name={name}
             disabled={disabled}
-            max={max}
-            min={min}
-            hidden={hidden}
+            max={max | 255}
+            min={min | 0}
+            hidden={hidden | false}
         />
     )
 }

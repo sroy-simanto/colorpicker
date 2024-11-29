@@ -1,34 +1,14 @@
-/* eslint-disable */
-
-import React, { useState } from "react";
+/* eslint-disable */ 
 import Title from "./reuseable-components/Title";
 import Button from "./reuseable-components/Button";
 import Input from "./reuseable-components/Input";
 import Label from "./reuseable-components/Label";
 
-export default function ColorFormate({ colors, handleHexValue, handleRadioRedColorAdjust, handleRadioGreenColorAdjust, handleRadioBlueColorAdjust, handleSaveColor }) {
-
-    const [colorMode, setColorMode] = useState()
-    const [hexValue, _setHexValue] = useState("hex");
-    const [rgbValue, _setRgbValue] = useState("rgb");
-
-    const handleColorModeChange = e => {
-        setColorMode(e.target.value);
-    }
-
-    const handleCopy = () => {
-        if (colorMode != 'undefined') {
-            if (colorMode === 'hex') {
-                window.navigator.clipboard.writeText(`#${colors.hexColor}`)
-                alert(`#${colors.hexColor} copied`)
-            } else if (colorMode === 'rgb') {
-                window.navigator.clipboard.writeText(colors.rgbColor)
-                alert(`${colors.rgbColor} copied`)
-            }
-        }
-    }
+export default function ColorFormate({ colors, handleColorModeChange, handleCopy, hexValue, rgbValue, handleHexValue, inpHexValueUpdate, handleRadioColorAdjust, handleSaveColor, rangeValue }) {
+    const {red, green, blue} = rangeValue;
 
     return (
+        
         <div>
             <div className="flex justify-between items-center mt-5 mb-2">
                 <Title
@@ -98,9 +78,9 @@ export default function ColorFormate({ colors, handleHexValue, handleRadioRedCol
                     />
                     <Input
                         type="text"
-                        value={colors.hexColor}
+                        value={inpHexValueUpdate}
                         id="input-hex"
-                        className="border outline-none pl-7"
+                        className="border outline-none pl-7 uppercase"
                         handler={handleHexValue}
                         defaultChecked={false}
                         name=""
@@ -135,40 +115,43 @@ export default function ColorFormate({ colors, handleHexValue, handleRadioRedCol
                     <div>
                         <div className="flex items-center justify-between">
                             <p className="text-gray-600">Red</p>
-                            <p className="text-gray-600">{colors.red}</p>
+                            <p className="text-gray-600">{red}</p>
                         </div>
                         <Input 
                             type="range"
+                            name="red"
                             min="0"
                             max="255"
-                            handler={handleRadioRedColorAdjust}
-                            value={colors.red}
+                            handler={handleRadioColorAdjust}
+                            value={red}
                         />
                     </div>
                     <div>
                         <div className="flex items-center justify-between">
                             <p className="text-gray-600">Green</p>
-                            <p className="text-gray-600">{colors.green}</p>
+                            <p className="text-gray-600">{green}</p>
                         </div>
                         <Input 
                             type="range"
+                            name="green"
                             min="0"
                             max="255"
-                            handler={handleRadioGreenColorAdjust}
-                            value={colors.green}
+                            handler={handleRadioColorAdjust}
+                            value={green}
                         />
                     </div>
                     <div>
                         <div className="flex items-center justify-between">
                             <p className="text-gray-600">Blue</p>
-                            <p className="text-gray-600">{colors.blue}</p>
+                            <p className="text-gray-600">{blue}</p>
                         </div>
                         <Input 
                             type="range"
+                            name="blue"
                             min="0"
                             max="255"
-                            handler={handleRadioBlueColorAdjust}
-                            value={colors.blue}
+                            handler={handleRadioColorAdjust}
+                            value={blue}
                         />
                     </div>
                 </div>
