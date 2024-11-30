@@ -1,8 +1,8 @@
 /* eslint-disable */ 
-import Title from "./reuseable-components/Title";
-import Button from "./reuseable-components/Button";
-import Input from "./reuseable-components/Input";
-import Label from "./reuseable-components/Label";
+import Title from "./shared/Title";
+import Button from "./shared/Button";
+import Input from "./shared/Input";
+import Label from "./shared/Label";
 
 export default function ColorFormate({ colors, handleColorModeChange, handleCopy, hexValue, rgbValue, handleHexValue, inpHexValueUpdate, handleRadioColorAdjust, handleSaveColor, rangeValue }) {
     const {red, green, blue} = rangeValue;

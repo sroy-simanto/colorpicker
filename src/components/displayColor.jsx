@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from "react";
-import Title from "./reuseable-components/Title";
-import Button from "./reuseable-components/Button";
+import Title from "./shared/Title";
+import Button from "./shared/Button";
 
 export default function DisplayColor ({ handleChangeColor, bgColor }) {
 

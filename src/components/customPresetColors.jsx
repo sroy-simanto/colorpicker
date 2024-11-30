@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import Title from "./reuseable-components/Title";
+import Title from "./shared/Title";
 
 export default function CustomPresetColors({ colors }) {
 

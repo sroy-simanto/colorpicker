@@ -14,14 +14,6 @@ const useColors = () => {
 
     const [inpHexValueUpdate, setInpHexValueUpdate] = useState(colors.hexColor)
 
-    const [bgImage, setBgImage] = useState(null)
-    const [bgStyle, setBgStyle] = useState({
-        bgSize: 'auto',
-        bgRepeat: 'repeat',
-        bgPosition: 'left-top',
-        bgAttachment: 'initial'
-    });
-
     const [colorMode, setColorMode] = useState("hex")
     const [hexValue, _setHexValue] = useState("hex");
     const [rgbValue, _setRgbValue] = useState("rgb");
@@ -87,8 +79,6 @@ const useColors = () => {
                 ...colors,
                 usersSavedPresetColors: [color, ...colors.usersSavedPresetColors]
             })
-            // todo (bug) : 
-            localStorage.setItem('custom-preset-color', JSON.stringify(colors.usersSavedPresetColors))
         }
     }
 
@@ -116,28 +106,8 @@ const useColors = () => {
         }
     }
 
-    const handleBgImageChange = (e) => {
-        if (e.target.files.length !== 0) {
-            setBgImage(e.target.files[0])
-        }
-    }
-
-    const handleBgRemove = () => {
-        setBgImage(null)
-    }
-
-    const handleBgStyles = (event) => {
-        const { name, value } = event.target;
-        setBgStyle({
-            ...bgStyle,
-            [name]: value
-        })
-    }
-
     return {
         colors,
-        bgImage,
-        bgStyle,
         hexValue,
         rgbValue,
         handleColorModeChange,
@@ -146,9 +116,6 @@ const useColors = () => {
         handleHexValue,
         handleRadioColorAdjust,
         handleSaveColor,
-        handleBgImageChange,
-        handleBgRemove,
-        handleBgStyles,
         inpHexValueUpdate,
         rangeValue
     }
