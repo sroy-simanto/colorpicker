@@ -55,3 +55,16 @@ export const hexToDecimal = (hex) => {
         b
     }
 }
+
+export const findDuplicates = (arr) => {
+    const duplicates = [];
+    for (let i = 0; i < arr.length; i++) {
+        const index = Math.abs(arr[i]) - 1;
+        if (arr[index] < 0) {
+            duplicates.push(Math.abs(arr[i]));
+        } else {
+            arr[index] = -arr[index];
+        }
+    }
+    return duplicates;
+}

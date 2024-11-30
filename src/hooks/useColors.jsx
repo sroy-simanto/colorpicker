@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { generateDecimalNumbers, generateHexColorCode, generateRGBColorCode, isValidHexColor, isValidRGBColor, hexToRgb, hexToDecimal } from '../utils/utils.js'
 
 const useColors = () => {
@@ -7,7 +7,7 @@ const useColors = () => {
     const [colors, setColors] = useState({
         hexColor: "111111",
         rgbColor: "rgb(17, 17, 17)",
-        usersSavedPresetColors: ['#ffcdd2', '#f8bbd0', '#e1bee7'],
+        usersSavedPresetColors: ['ffcdd2', 'f8bbd0', 'e1bee7', 'ff8a80'],
         inpHexValUp: null,
         rangeValues: null
     });
@@ -59,13 +59,6 @@ const useColors = () => {
     }
 
     const handleRadioColorAdjust = (event) => {
-        setColors({
-            ...colors,
-            hexColor: generateHexColorCode(rangeValue),
-            rgbColor: generateRGBColorCode(rangeValue),
-            inpHexValUp: setInpHexValueUpdate(generateHexColorCode(rangeValue))
-        })
-
         const { name, value } = event.target;
         if (name === 'red' || name === 'green' || name === 'blue') {
             setRangeValue({
@@ -75,28 +68,28 @@ const useColors = () => {
         }
     }
 
-    // useEffect(() => {
-    //     setColors({
-    //         ...colors,
-    //         hexColor: generateHexColorCode(rangeValue),
-    //         rgbColor: generateRGBColorCode(rangeValue),
-    //         inpHexValUp: setInpHexValueUpdate(generateHexColorCode(rangeValue))
-    //     })
-    // }, [handleRadioColorAdjust])
-
+    useEffect(() => {
+        setColors({
+            ...colors,
+            hexColor: generateHexColorCode(rangeValue),
+            rgbColor: generateRGBColorCode(rangeValue),
+            inpHexValUp: setInpHexValueUpdate(generateHexColorCode(rangeValue))
+        })
+    }, [rangeValue])
 
     const handleSaveColor = () => {
-        if (isValidHexColor(colors.hexColor)) {
-            if (!colors.usersSavedPresetColors.includes(colors.hexColor)) {
-                setColors({
-                    ...colors,
-                    usersSavedPresetColors: [...colors.usersSavedPresetColors, `#${colors.hexColor}`]
-                })
-            }
+        let color = colors.hexColor;
+        if (colors.usersSavedPresetColors.includes(color)) {
+            alert('Colors Already Saved');
+            return
         } else {
-            alert("Not a valid color code")
+            setColors({
+                ...colors,
+                usersSavedPresetColors: [color, ...colors.usersSavedPresetColors]
+            })
+            // todo (bug) : 
+            localStorage.setItem('custom-preset-color', JSON.stringify(colors.usersSavedPresetColors))
         }
-
     }
 
     const handleColorModeChange = e => {
