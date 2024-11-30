@@ -15,8 +15,8 @@ export default function CustomPresetColors({ colors }) {
             <hr />
             <div className="grid gap-2 grid-cols-5 mt-3">
                 {
-                    usersSavedPresetColors.map((color, i) => (
-                        <div key={i} className="w-24 h-8 rounded-md cursor-pointer" style={{ backgroundColor: `${color}` }}></div>
+                    usersSavedPresetColors && usersSavedPresetColors.map((color, i) => (
+                        <div key={i} className="w-24 h-8 rounded-md cursor-pointer" style={{ backgroundColor: `#${color}` }}></div>
                     ))
                 }
             </div>
